@@ -6,7 +6,7 @@ user_store = {}
 
 @router.post("/users")
 def add_user(user: User):
-    user_store[user.id] = user
+    user_store[int(user.id)] = user
     return {"message": f"User {user.name} stored successfully."}
 
 @router.get("/users/{user_id}")

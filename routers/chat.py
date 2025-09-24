@@ -8,13 +8,16 @@ router = APIRouter()
 @router.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
     # Personalize with user data
-    user_info = user_store.get(int(req.user_id))
-    user_context = f"User info: {user_info.dict()}" if user_info else "No user info provided."
+    user_info = user_store.get(req.user_id)
+    user_context = user_info.dict() if user_info else "No user info provided."
 
     # Run chain
     response = conversational_rag_chain.invoke(
-        {"input": f"{req.message}\n\n{user_context}"},
-        config={"configurable": {"user_id": req.user_id}}
+        {
+            "input": req.message,
+            "user_info": user_context
+        },
+        config={"configurable": {"session_id": req.user_id}}
     )
     answer = response["answer"]
 

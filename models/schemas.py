@@ -5,7 +5,7 @@ from typing import List, Optional
 class Child(BaseModel):
     id: int
     name: str
-    gender: bool
+    male: bool
     dateOfBirth: str
     medicalNotes: Optional[str] = None
     medicalRecords: List[dict] = []
@@ -19,13 +19,13 @@ class User(BaseModel):
     name: str
     phone: str
     email: str
-    gender: bool
+    male: bool
     familyId: str
     children: List[Child] = []
 
 # --- Chat Request/Response ---
 class ChatRequest(BaseModel):
-    user_id: str
+    user_id: int
     message: str
 
 class ChatResponse(BaseModel):
