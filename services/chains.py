@@ -29,17 +29,17 @@ history_rag_chain = create_retrieval_chain(
 # --- Memory ---
 store = {}
 
-def get_trimmed_history(session_id: str, keep_pairs: int = 3):
-    if session_id not in store:
-        store[session_id] = ChatMessageHistory()
-    history = store[session_id]
+def get_trimmed_history(user_id: str, keep_pairs: int = 3):
+    if user_id not in store:
+        store[user_id] = ChatMessageHistory()
+    history = store[user_id]
 
     if len(history.messages) > keep_pairs * 2:
         history.messages = history.messages[-keep_pairs * 2 :]
     return history
 
-def get_session_history(session_id: str) -> BaseChatMessageHistory:
-    return get_trimmed_history(session_id, keep_pairs=3)
+def get_session_history(user_id: str) -> BaseChatMessageHistory:
+    return get_trimmed_history(user_id, keep_pairs=3)
 
 # Main chain
 conversational_rag_chain = RunnableWithMessageHistory(
