@@ -4,7 +4,7 @@ from langchain_groq import ChatGroq
 
 # env = dotenv_values("app.env")
 GROQ_API_KEY  = os.getenv("GROQ_API_KEY")
-HF_TOKEN  = os.getenv("HF_TOKEN")
+# HF_TOKEN  = os.getenv("HF_TOKEN")
 
 def load_llm():
     return ChatGroq(
