@@ -1,10 +1,9 @@
 fastapi
-uvicorn
+uvicorn[standard]
 python-dotenv
 langchain
 langchain-community
-langchain-groq
 langchain-huggingface
 faiss-cpu
-pydantic
 sentence-transformers
+langchain-groq
