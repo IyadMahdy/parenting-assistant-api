@@ -5,6 +5,7 @@ langchain
 langchain-community
 langchain-groq
 langchain-huggingface
-faiss-cpu
 pydantic
 sentence-transformers
+qdrant-client
+langchain_qdrant
